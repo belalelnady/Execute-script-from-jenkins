@@ -1,2 +1,2 @@
 #!/bin/bash
-/bin/bash hello.sh
+echo "This is a message from github"
