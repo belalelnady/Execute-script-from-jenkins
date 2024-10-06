@@ -21,6 +21,7 @@ pipeline {
             steps {
                 script {
                     // Run Docker build for the Dockerfile in the repository
+                    sh 'echo this-will-fail'
                     sh 'docker build -t ${IMAGE_NAME} .'
                 }
             }
