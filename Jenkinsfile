@@ -6,7 +6,7 @@ pipeline {
         REPO_URL = 'https://github.com/belalelnady/Execute-script-from-jenkins'
         
         // Define the Docker image name based on the repository name
-        IMAGE_NAME = 'Dockerized-web-app:latest'
+        IMAGE_NAME = 'Dockerized-web-app'
     }
 
     stages {
