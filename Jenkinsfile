@@ -28,12 +28,7 @@ pipeline {
         }
 
         stage('Push Docker Image') {
-            when {
-                expression {
-                    // Push only if branch is main
-                    return env.BRANCH_NAME == 'master'
-                }
-            }
+      
             steps {
                 script {
                     // Log in to Docker Hub (assuming credentials are stored in Jenkins)
