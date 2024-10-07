@@ -6,7 +6,7 @@ pipeline {
         REPO_URL = 'https://github.com/belalelnady/Execute-script-from-jenkins'
         
         // Define the Docker image name based on the repository name
-        IMAGE_NAME = 'Dockerized-web-app:latest'
+        IMAGE_NAME = 'dockerized-web-app'
     }
 
     stages {
@@ -36,9 +36,9 @@ pipeline {
             steps {
                 script {
                     // Log in to Docker Hub (assuming credentials are stored in Jenkins)
-                    withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                        sh 'echo ${DOCKER_PASS} | docker login -u ${DOCKER_USER} --password-stdin'
-                        
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                  
+                        sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
                         // Tag the Docker image and push to Docker Hub
                         sh 'docker tag ${IMAGE_NAME} ${DOCKER_USER}/${IMAGE_NAME}:latest'
                         sh 'docker push ${DOCKER_USER}/${IMAGE_NAME}:latest'
@@ -52,6 +52,7 @@ pipeline {
         always {
             // Cleanup Docker images
             sh 'docker rmi ${IMAGE_NAME} || true'
+            sh 'echo  cleaned'
         }
     }
 }
