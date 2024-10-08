@@ -54,13 +54,11 @@
             state: started
             enabled: true
     
-        - name: Set Docker environment variables
-          ansible.builtin.set_fact:
-            docker_env: "DOCKER_HOST=unix:///var/run/docker.sock"
+  
 
         - name: Pull default Docker image
           environment:
-            DOCKER_HOST: "{{ docker_env }}"
+            DOCKER_HOST: "unix:///var/run/docker.sock"
           ansible.builtin.docker_image:
             name: nginx:latest
             source: pull
