@@ -55,11 +55,11 @@
             enabled: true
     
         - name: Pull default Docker image
-          docker_image:
+          community.docker.docker_image:
             name: "{{ default_container_image }}"
-          environment:
-            DOCKER_HOST: "unix:///var/run/docker.sock"
-
+            source: pull
+            environment:
+              DOCKER_HOST: "unix:///var/run/docker.sock"
     
         - name: Create default containers
           community.docker.docker_container:
