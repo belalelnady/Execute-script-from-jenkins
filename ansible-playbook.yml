@@ -59,7 +59,7 @@
         - name: Pull default Docker image
           environment:
             DOCKER_HOST: "unix:///var/run/docker.sock"
-            DOCKER_API_VERSION: "1.40"
+            DOCKER_API_VERSION: "1.47"
           ansible.builtin.docker_image:
             name: nginx:latest
             source: pull
