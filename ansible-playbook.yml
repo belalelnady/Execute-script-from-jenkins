@@ -54,10 +54,22 @@
             state: started
             enabled: true
     
+        - name: Set Docker environment variables
+          ansible.builtin.set_fact:
+            docker_env: "DOCKER_HOST=unix:///var/run/docker.sock"
+
         - name: Pull default Docker image
-          community.docker.docker_image:
-            name: "{{ default_container_image }}"
+          environment:
+            DOCKER_HOST: "{{ docker_env }}"
+          ansible.builtin.docker_image:
+            name: nginx:latest
             source: pull
+
+
+        # - name: Pull default Docker image
+        #   community.docker.docker_image:
+        #     name: "{{ default_container_image }}"
+        #     source: pull
           
     
         - name: Create default containers
