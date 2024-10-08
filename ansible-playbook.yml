@@ -56,7 +56,7 @@
     
         - name: Pull default Docker image
           docker_image:
-            name: {{ default_container_image }}
+            name: "{{ default_container_image }}"
           environment:
             DOCKER_HOST: "unix:///var/run/docker.sock"
 
