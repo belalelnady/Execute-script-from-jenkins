@@ -42,6 +42,15 @@ pipeline {
                 }
             }
         }
+
+         stage('Run Ansible Playbook') {
+            steps {
+                script {
+                    // Run the Ansible command
+                    sh 'ansible-playbook -i 44.204.96.93, -u ubuntu --private-key="./web_app_key.pem" ansible-playbook.yml' 
+                }
+            }
+        }
     }
 
     post {
