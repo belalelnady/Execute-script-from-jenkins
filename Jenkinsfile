@@ -47,7 +47,7 @@ pipeline {
             steps {
                 script {
 
-                   ansiblePlaybook become: true, credentialsId: 'ansible', disableHostKeyChecking: true, installation: 'Ansible', inventory: './inventory.ini', playbook: './ansible-playbook.yml', vaultTmpPath: ''
+                   ansiblePlaybook become: true, credentialsId: 'ansible', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.ini', playbook: 'ansible-playbook.yml', vaultTmpPath: ''
                 }
             }
         }
