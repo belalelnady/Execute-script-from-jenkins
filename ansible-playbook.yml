@@ -4,7 +4,7 @@
       vars:
         container_count: 1
         default_container_name: docker
-        default_container_image: belalelnady/dockerized-web-app
+        default_container_image: nginx
         # default_container_command: echo "done"
     
       tasks:
@@ -54,6 +54,21 @@
             state: started
             enabled: true
     
+  
+
+        - name: Pull default Docker image
+          docker_image:
+            name: belalelnady/dockerized-web-app
+            source: pull
+
+        - name: Pull default Docker image
+          docker_container:
+            name: work_please
+            image: belalelnady/dockerized-web-app
+            state: started
+            ports:
+            - 80:80
+
 
         # - name: Pull default Docker image
         #   community.docker.docker_image:
