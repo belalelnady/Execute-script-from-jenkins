@@ -61,5 +61,5 @@ pipeline {
             sh 'docker rmi ${IMAGE_NAME} || true'
             sh 'echo  cleaned'
         }
-    }
-}
+ }
+
