@@ -1,11 +1,11 @@
 pipeline{
     agent{
-        docker {image 'alpine:latest'}
+        docker {image 'node:lts-alpine'}
     }
     stages{
         stage('image-1'){
             steps{
-                sh 'echo test-from-the-container'
+                sh 'node --version'
             }
         }
     }
