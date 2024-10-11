@@ -44,11 +44,10 @@ pipeline {
         }
 
          stage('Run Ansible Playbook') {
+            agent { label 'ansible-agent' }
             steps {
                 script {
-
-                    // sh 'ansible-playbook -i <TARGET_IP>, -u ubuntu --private-key="./ansible.pem" ansible-playbook.yml' 
-                   ansiblePlaybook become: true, credentialsId: 'ansible', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.ini', playbook: 'ansible-playbook.yml', vaultTmpPath: ''
+                   ansiblePlaybook become: true, credentialsId: 'ansible-agent', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.ini', playbook: 'ansible-playbook.yml', vaultTmpPath: ''
                 }
             }
         }
