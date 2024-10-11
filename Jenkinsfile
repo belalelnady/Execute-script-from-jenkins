@@ -43,13 +43,16 @@ pipeline {
             }
         }
 
-         stage('Run Ansible Playbook') {
-             agent { label 'ansible-agent' } 
-             script {
+           stage('Run Ansible Playbook') {
+            agent { label 'ansible-agent' }
+            steps {
+                script {
                     // Run the Ansible command
                     sh 'ansible-playbook -i inventory.ini ansible-playbook.yml' // Replace with your playbook and inventory files
                 }
+            }
         }
+    }
     }
 
     post {
