@@ -1,0 +1,12 @@
+pipeline{
+    agent{
+        docker {image 'alpine:latest'}
+    }
+    stages{
+        stage('image-1'){
+            steps{
+                sh 'echo test-from-the-container'
+            }
+        }
+    }
+}
