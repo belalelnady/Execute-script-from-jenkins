@@ -45,11 +45,13 @@ pipeline {
 
          stage('Run Ansible Playbook') {
             agent { label 'ansible-agent' }
-            steps {
+                  
                 script {
-                   ansiblePlaybook become: true, credentialsId: 'ansible-agent', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.ini', playbook: 'ansible-playbook.yml', vaultTmpPath: ''
+                    // Run the Ansible command
+                    sh 'ansible-playbook -i inventory.ini ansible-playbook.yml' // Replace with your playbook and inventory files
                 }
             }
+    
         }
     }
 
