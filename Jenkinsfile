@@ -48,7 +48,8 @@ pipeline {
             steps {
                 script {
                     // Run the Ansible command
-                    sh 'ansible-playbook -i inventory.ini ansible-playbook.yml' // Replace with your playbook and inventory files
+                    // sh 'ansible-playbook -i inventory.ini ansible-playbook.yml' // Replace with your playbook and inventory files
+                    ansiblePlaybook credentialsId: 'ansible-agent', installation: 'Ansible', inventory: 'inventory.ini', playbook: 'ansible-playbook.yml', vaultTmpPath: ''
                 }
             }
         }
