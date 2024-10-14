@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'ansible-agent' }
 
     environment {
         // Set your GitHub repository URL
@@ -44,11 +44,11 @@ pipeline {
         }
 
            stage('Run Ansible Playbook') {
-            agent { label 'ansible-agent' }
+           
             steps {
                 script {
                     // Run the Ansible command
-                     sh 'ansible-playbook -i inventory.ini ansible-playbook.yml --private-key /home/ubuntu/web_app_key.pem' 
+                     sh 'ansible-playbook -i inventory.ini ansible-playbook.yml' 
                      // Replace with your playbook and inventory files
                    
                 }
