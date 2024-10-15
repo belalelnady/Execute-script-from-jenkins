@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'ansible-agent' }
+    agent { label 'jenkins-agent' }
 
     environment {
         // Set your GitHub repository URL
@@ -14,6 +14,13 @@ pipeline {
             steps {
                 // Clone the repository
                 git url: "${REPO_URL}", branch: 'master'
+                sh ''
+            }
+        }
+          stage('Move Key-pair') {
+            agent any 
+            steps {
+                sh 'sudo scp -i web_app_key.pem web_app_key.pem ubuntu@3.239.105.205:/home/ubuntu'
             }
         }
 
