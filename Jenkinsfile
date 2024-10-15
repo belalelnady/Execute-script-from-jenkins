@@ -20,7 +20,7 @@ pipeline {
           stage('Move Key-pair') {
             agent any 
             steps {
-                sh ' scp -o StrictHostKeyChecking=no -i ~/.ssh/web_app_key.pem ~/.ssh/web_app_key.pem ubuntu@3.239.105.205:/home/ubuntu'
+                sh ' scp -o StrictHostKeyChecking=no -i /home/ubuntu/web_app_key.pem /home/ubuntu/web_app_key.pem ubuntu@3.239.105.205:/home/ubuntu'
             }
         }
 
