@@ -20,7 +20,7 @@ pipeline {
           stage('Move Key-pair') {
             agent any 
             steps {
-                sh 'sudo scp -i web_app_key.pem web_app_key.pem ubuntu@3.239.105.205:/home/ubuntu'
+                sh 'sudo scp -i ~/.ssh/web_app_key.pem ~/.ssh/web_app_key.pem ubuntu@3.239.105.205:/home/ubuntu'
             }
         }
 
