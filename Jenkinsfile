@@ -76,7 +76,6 @@ pipeline {
         always {
             // Cleanup Docker images
             sh 'docker rmi ${IMAGE_NAME} || true'
-            sh 'rm -r ./web-app/node-modules'
             sh 'echo  cleaned'
         }
  }
