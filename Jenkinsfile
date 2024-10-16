@@ -20,7 +20,7 @@ pipeline {
         stage('Install') {
                 steps {
                     //  Install dependencies once
-                    sh 'npm ci'   
+                    sh 'npm  --prefix web-app ci'   
                 }
             }
     
@@ -63,7 +63,7 @@ pipeline {
             steps {
                 script {
                     // Run the Ansible command
-                     sh 'ansible-playbook -i inventory.ini ansible-playbook.yml' 
+                     sh 'ansible-playbook  ansible-playbook.yml' 
                      // Replace with your playbook and inventory files
                    
                 }
