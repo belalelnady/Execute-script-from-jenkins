@@ -27,7 +27,7 @@ pipeline {
         stage('Test') {
                     steps {
                         // Test the web app before building it with jest
-                       sh 'npm test'
+                       sh 'npm --prefix web-app test'
                     }
                 }
 
