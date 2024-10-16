@@ -85,8 +85,8 @@ module "agent-instances" {
               sudo apt-get install openjdk-11-jdk -y
               curl -fsSL https://test.docker.com -o test-docker.sh
               sudo sh test-docker.sh
-              sudo apt install nodejs -y
-              sudo apt install npm -y
+              curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+              sudo apt-get install -y nodejs
               EOF
 
 }
