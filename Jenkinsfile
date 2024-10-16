@@ -14,15 +14,23 @@ pipeline {
             steps {
                 // Clone the repository
                 git url: "${REPO_URL}", branch: 'master'
-                sh ''
+                
             }
         }
-          stage('Move Key-pair') {
-            agent any 
-            steps {
-                sh ' scp -o StrictHostKeyChecking=no -i ~/.ssh/web_app_key.pem ~/.ssh/web_app_key.pem ubuntu@44.214.6.82:/home/ubuntu'
+        stage('Install') {
+                steps {
+                    //  Install dependencies once
+                    sh 'npm ci'   
+                }
             }
-        }
+    
+        stage('Test') {
+                    steps {
+                        // Test the web app before building it with jest
+                       sh 'npm test'
+                    }
+                }
+
 
         stage('Build Docker Image') {
             steps {
