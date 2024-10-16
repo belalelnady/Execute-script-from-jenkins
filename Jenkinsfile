@@ -63,7 +63,7 @@ pipeline {
                 script {
                     // Run the Ansible command
                     //  sh 'ansible-playbook -i web-app.ini ansible-playbook.yml' 
-                     sh'ansible-playbook -i web-app.ini -u ubuntu ansible-playbook.yml'
+                     sh'ANSIBLE_CONFIG=./ansible.cfg ansible-playbook ansible-playbook.yml'
                      // Replace with your playbook and inventory files
                    
                 }
