@@ -17,22 +17,9 @@ pipeline {
                 
             }
         }
-        stage('Install') {
-                steps {
-                    //  Install dependencies once
-                    sh 'npm  --prefix web-app ci'   
-                }
-            }
-    
-        stage('Test') {
-                    steps {
-                        // Test the web app before building it with jest
-                       sh 'npm --prefix web-app test'
-                    }
-                }
 
 
-        stage('Build Docker Image') {
+        stage('TEST THE APP AND Build Docker Image') {
             steps {
                 script {
                     // Run Docker build for the Dockerfile in the repository
