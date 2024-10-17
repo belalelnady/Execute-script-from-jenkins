@@ -1,2 +1,3 @@
 after terraform apply 
-run the script move-keypair.sh localy to setup the nodes
+
+run the script ansble-cmd localy to setup the nodes with ansible

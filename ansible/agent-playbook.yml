@@ -74,12 +74,22 @@
 
 
     # Copy the key-pair to the agent machine
-    - name: Copy the file to the target machine
+    - name: Copy the key pair to the target machine
       copy:
         src: ~/.ssh/web_app_key.pem # Path to the local key pair you want to copy
         dest: /home/ubuntu/web_app_key.pem # Path on the agent machine
-        mode: '0600'  # Set permissions to 600       
+        mode: '0600'  # Set permissions to 600   
+
+    - name: Change ownership of the key-par file
+      file:
+        path: /home/ubuntu/web_app_key.pem  
+        owner: ubuntu  
+        group: ubuntu  
+
+
     - name: Change permissions of a specific file
       file:
-        path: /var/run/docker.sock  # Specify the path to the file
+        path: /var/run/docker.sock 
         mode: '0777'  
+
+   
