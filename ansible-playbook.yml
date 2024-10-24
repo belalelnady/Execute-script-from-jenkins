@@ -60,7 +60,7 @@
           community.docker.docker_container:
             name: "{{ default_container_name }}"
             state: absent
-          when: container_info.results[0].State.Status == 'running'
+          when: container_info.exists
           
         - name: Create and start containers
           community.docker.docker_container:
