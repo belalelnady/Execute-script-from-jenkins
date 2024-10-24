@@ -53,18 +53,18 @@
                     
         - name: Check if the container is running
           community.docker.docker_container_info:
-            name: "{{ default_container_name }}{{ item }}"
+            name: "{{ default_container_name }}"
           register: container_info
 
         - name: Stop and remove the container if it's running
           community.docker.docker_container:
-            name: "{{ default_container_name }}{{ item }}"
+            name: "{{ default_container_name }}"
             state: absent
           when: container_info.results[0].State.Status == 'running'
           
         - name: Create and start containers
           community.docker.docker_container:
-            name: "{{ default_container_name }}{{ item }}"
+            name: "{{ default_container_name }}"
             image: "{{ default_container_image }}"
             published_ports:
               - "80:80"
